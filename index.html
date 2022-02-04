@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>fuel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.8.10/tailwind.min.css" rel="stylesheet" />
+<link href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+<body>
+
+<div id="app">
+  <div class="flex">
+    <span class="text-4xl">Petrol RM</span><input type="number" v-model="rate" class="text-6xl max-w-sm" /><span class="text-4xl">/L</span>
+  </div>
+  <div>
+    <span class="text-4xl">Car consumption </span><input type="number" v-model="car" class="text-6xl" /><span class="text-4xl">L/100km</span>
+  </div>
+  <div>
+    <h2 class="text-4xl">Car expenses RM{{expenses.toFixed(2)}}/km</h2>
+  </div>
+  <div>
+    <span class="text-4xl">Distance: </span><input type="number" v-model="km" class="text-6xl" /><span class="text-4xl">KM</span>
+  </div>
+  <div>
+    <span class="text-4xl">Price RM{{price.toFixed(2)}}</span>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+new Vue({
+  el: "#app",
+  data() {
+    return {
+      rate: 2.05,
+      km: 10,
+      car: 7.8,
+      expenses: 10000 / 150000
+    };
+  },
+  mounted() {},
+  computed: {
+    price() {
+      return ((this.rate * this.car) / 100 + this.expenses) * this.km;
+    }
+  },
+  methods: {
+    func() {}
+  }
+});
+</script>
+
+</body>
+</html>
